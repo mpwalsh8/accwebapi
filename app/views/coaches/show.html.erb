@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @coach.firstname %>
+</p>
+
+<p>
+  <strong>Middlename:</strong>
+  <%= @coach.middlename %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @coach.lastname %>
+</p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @coach.nickname %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @coach.active %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @coach.email %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @coach.twitter %>
+</p>
+
+<div class="ui-grid-a">
+  <div class="ui-block-a">
+    <%= link_to 'Edit', edit_coach_path(@coach), :'data-role' => 'button' %>
+  </div>
+  <div class="ui-block-b">
+    <%= link_to 'Back', coaches_path, :'data-role' => 'button' %>
+  </div>
+</div>

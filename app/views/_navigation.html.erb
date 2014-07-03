@@ -1,0 +1,16 @@
+<!--
+<p>
+    <a#%= link_to 'Home', teams_path %> |
+    <a#%= link_to 'Teams', teams_path %> |
+    <a#%= link_to 'Athletes', athletes_path %> |
+    <a#%= link_to 'Coaches', coaches_path %>
+</p>
+-->
+<div data-role="navbar">
+  <ul>
+    <li><%= link_to 'Home', teams_path, :'data-icon' => 'home', :'data-transition' => 'slide' %></li>
+    <li><%= link_to 'Teams', teams_path, :'data-icon' => 'info', :'data-transition' => 'slide' %></li>
+    <li><%= link_to 'Athletes', athletes_path, :'data-icon' => 'info', :'data-transition' => 'slide' %></li>
+    <li><%= link_to 'Coaches', coaches_path, :'data-icon' => 'info', :'data-transition' => 'slide' %></li>
+  </ul>
+</div><!-- "navbar" -->

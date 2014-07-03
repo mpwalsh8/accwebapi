@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @athlete.firstname %>
+</p>
+
+<p>
+  <strong>Middlename:</strong>
+  <%= @athlete.middlename %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @athlete.lastname %>
+</p>
+
+<p>
+  <strong>Nickname:</strong>
+  <%= @athlete.nickname %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @athlete.dob %>
+</p>
+
+<p>
+  <strong>Gradyear:</strong>
+  <%= @athlete.gradyear %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @athlete.active %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @athlete.height %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @athlete.weight %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @athlete.email %>
+</p>
+
+<p>
+  <strong>Twitter:</strong>
+  <%= @athlete.twitter %>
+</p>
+
+<%= link_to 'Edit', edit_athlete_path(@athlete), :'data-role' => 'button' %>
+<%= link_to 'Back', athletes_path, :'data-role' => 'button' %>

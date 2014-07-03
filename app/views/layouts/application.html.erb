@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Accwebapi</title>
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body class='<%= controller.controller_name %>'>
+<div data-role="page" data-theme="a" data-content-theme="a">
+  <div data-role="header">
+    <h1>Apex Cougar Club - Supporting Apex High School Athletics</h1>
+    <a href="#about" data-icon="info" data-rel="dialog" data-transition="pop" data-role="button">About</a>
+  </div><!-- "header" -->
+  <%= render :partial => '/navigation' %>
+  <div data-role="main" class="ui-content">
+    <%= yield %>
+  </div><!-- "main" -->
+</div><!-- "page" -->
+</body>
+</html>

@@ -1,0 +1,57 @@
+<%= form_for(@team) do |f| %>
+  <% if @team.errors.any? %>
+   <div id="error_explanation">
+      <h2><%= pluralize(@team.errors.count, "error") %> prohibited this team from being saved:</h2>
+
+      <ul>
+      <% @team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :sport_id %><br>
+    <%#= f.text_field :sport %>
+    <%#= select(:sport, :id, Sport.all.collect {|sport| [sport.name, sport.id]}) %>
+    <%= f.collection_select :sport_id, Sport.all, :id, :name %>
+  </div>
+  <div class="field">
+    <%= f.label :varsity, "Type" %><br>
+    <fieldset data-role="controlgroup">
+      <%= f.radio_button :varsity, true %> 
+      <%= f.label :varsity, 'Varsity', :value => true %>
+      <%= f.radio_button :varsity, false %>
+      <%= f.label :varsity, 'JV', :value => false %>
+    </fieldset>
+  </div>
+  <div class="field">
+    <%= f.label :gender, "Gender" %><br>
+    <fieldset data-role="controlgroup">
+      <%= f.radio_button :gender, 'male' %> 
+      <%= f.label :gender, 'Male', :value => 'male' %>
+      <%= f.radio_button :gender, 'female' %>
+      <%= f.label :gender, 'Female', :value => 'female' %>
+    </fieldset>
+  </div>
+  <div class="field">
+    <%= f.label :url, "Team Web Site" %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter, "Team Twitter Handle" %><br>
+    <%= f.text_field :twitter %>
+  </div>
+  <div class="field">
+    <%= f.label :active %><br>
+    <%= f.check_box :active %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
