@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702233900) do
+ActiveRecord::Schema.define(version: 20140703015655) do
 
   create_table "athletes", force: true do |t|
     t.string   "firstname"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20140702233900) do
     t.string   "twitter"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "gender"
   end
 
   create_table "coaches", force: true do |t|
@@ -65,7 +66,6 @@ ActiveRecord::Schema.define(version: 20140702233900) do
   end
 
   create_table "teams", force: true do |t|
-    t.string   "name"
     t.boolean  "active"
     t.string   "url"
     t.string   "twitter"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140702233900) do
     t.string   "gender"
     t.boolean  "varsity"
     t.integer  "sport_id"
+    t.string   "season"
   end
 
 end

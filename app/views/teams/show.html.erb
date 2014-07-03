@@ -1,28 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @team.name %>
+  <strong>Team:</strong>
+  <%= @team.formalname %>
 </p>
 
 <p>
-  <strong>Sport:</strong>
-  <%= @team.sport_id %>
+  <strong>Team Web Site:</strong>
+  <%= @team.url %>
+</p>
+
+<p>
+  <strong>Team Twitter Handle:</strong>
+  <%= @team.twitter %>
 </p>
 
 <p>
   <strong>Active:</strong>
   <%= @team.active %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= @team.url %>
-</p>
-
-<p>
-  <strong>Twitter:</strong>
-  <%= @team.twitter %>
 </p>
 
 <%= link_to 'Edit', edit_team_path(@team), :'data-role' => 'button' %>

@@ -12,47 +12,56 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :firstname, "First Name" %><br>
+    <%= f.label :firstname, "First Name" %>
     <%= f.text_field :firstname %>
   </div>
   <div class="field">
-    <%= f.label :middlename, "Last Name" %><br>
+    <%= f.label :middlename, "Last Name" %>
     <%= f.text_field :middlename %>
   </div>
   <div class="field">
-    <%= f.label :lastname, "Last Name" %><br>
+    <%= f.label :lastname, "Last Name" %>
     <%= f.text_field :lastname %>
   </div>
   <div class="field">
-    <%= f.label :nickname %><br>
+    <%= f.label :nickname %>
     <%= f.text_field :nickname %>
   </div>
   <div class="field">
-    <%= f.label :dob, "Date of Birth" %><br>
+    <%= f.label :gender, "Gender" %>
+    <fieldset data-role="controlgroup" data-type="horizontal">
+      <%= f.radio_button :gender, 'male' %>
+      <%= f.label :gender, 'Male', :value => 'male' %>
+      <%= f.radio_button :gender, 'female' %>
+      <%= f.label :gender, 'Female', :value => 'female' %>
+    </fieldset>
+  </div>
+  <div class="field">
+    <%= f.label :dob, "Date of Birth" %>
     <%= f.text_field :dob, :type => 'text', :'data-role' => 'date', :'data-inline' => 'true' %>
   </div>
   <div class="field">
-    <%= f.label :gradyear, "Graduation Year" %><br>
+    <%= f.label :gradyear, "Graduation Year" %>
     <%= f.select :gradyear, (Time.zone.now.year - 2)..(Time.zone.now.year + 4)%>
   </div>
   <div class="field">
-    <%= f.label :active, "Active Student" %><br>
+    <%= f.label :active, "Active Student" %>
     <%= f.check_box :active %>
   </div>
   <div class="field">
-    <%= f.label :height %><br>
+    <%= f.label :height %>
     <%= f.text_field :height %>
   </div>
   <div class="field">
-    <%= f.label :weight %><br>
+    <%= f.label :weight %>
     <%= f.text_field :weight %>
   </div>
   <div class="field">
-    <%= f.label :email, "Email Address" %><br>
+    <%= f.label :email, "Email Address" %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :twitter, "Twitter Username" %><br>
+    <%= f.label :twitter, "Twitter Handle" %>
     <%= f.text_field :twitter %>
   </div>
   <div class="actions">

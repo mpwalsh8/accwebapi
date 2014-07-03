@@ -12,43 +12,54 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :sport_id %><br>
-    <%#= f.text_field :sport %>
-    <%#= select(:sport, :id, Sport.all.collect {|sport| [sport.name, sport.id]}) %>
+    <%= f.label :sport_id %>
     <%= f.collection_select :sport_id, Sport.all, :id, :name %>
   </div>
+<div class="ui-grid-a">
+<div class="ui-block-a">
   <div class="field">
-    <%= f.label :varsity, "Type" %><br>
-    <fieldset data-role="controlgroup">
+    <%= f.label :varsity, "Type" %>
+    <fieldset data-role="controlgroup" data-type="horizontal">
       <%= f.radio_button :varsity, true %> 
       <%= f.label :varsity, 'Varsity', :value => true %>
       <%= f.radio_button :varsity, false %>
       <%= f.label :varsity, 'JV', :value => false %>
     </fieldset>
   </div>
+</div>
+<div class="ui-block-b">
   <div class="field">
-    <%= f.label :gender, "Gender" %><br>
-    <fieldset data-role="controlgroup">
-      <%= f.radio_button :gender, 'male' %> 
-      <%= f.label :gender, 'Male', :value => 'male' %>
-      <%= f.radio_button :gender, 'female' %>
-      <%= f.label :gender, 'Female', :value => 'female' %>
+    <%= f.label :gender, "Gender" %>
+    <fieldset data-role="controlgroup" data-type="horizontal">
+      <%= f.radio_button :gender, 'men' %> 
+      <%= f.label :gender, 'Men', :value => 'men' %>
+      <%= f.radio_button :gender, 'women' %>
+      <%= f.label :gender, 'Women', :value => 'women' %>
+    </fieldset>
+  </div>
+</div>
+</div>
+  <div class="field">
+    <%= f.label :season, "Season" %>
+    <fieldset data-role="controlgroup" data-type="vertical">
+      <%= f.radio_button :season, 'fall' %> 
+      <%= f.label :season, 'Fall', :value => 'fall' %>
+      <%= f.radio_button :season, 'winter' %>
+      <%= f.label :season, 'Winter', :value => 'winter' %>
+      <%= f.radio_button :season, 'spring' %>
+      <%= f.label :season, 'Spring', :value => 'spring' %>
     </fieldset>
   </div>
   <div class="field">
-    <%= f.label :url, "Team Web Site" %><br>
+    <%= f.label :url, "Team Web Site" %>
     <%= f.text_field :url %>
   </div>
   <div class="field">
-    <%= f.label :twitter, "Team Twitter Handle" %><br>
+    <%= f.label :twitter, "Team Twitter Handle" %>
     <%= f.text_field :twitter %>
   </div>
   <div class="field">
-    <%= f.label :active %><br>
+    <%= f.label :active %>
     <%= f.check_box :active %>
   </div>
   <div class="actions">
