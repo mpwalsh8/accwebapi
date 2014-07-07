@@ -27,7 +27,7 @@
 
   <%= form_tag(team_add_coach_path(@coach)) do %>
     <%= select_tag(:team, options_from_collection_for_select(@coach.is_not_on_staff, :id, :formalname)) %>
-    <%= submit_tag 'Add to Staff' %>
+    <%= submit_tag 'Add to Staff', :'data-role' => 'button', :'data-inline' => false %>
   <% end %>
 <% else %>
   <p><%=h @coach.fullname %> is on every staff.</p>
@@ -36,4 +36,4 @@
   <p>Teams Length:  <%=h @teams.length %></p>
 <% end %>
 
-<p><%= link_to "Back", @coach %></p>
+<%= link_to "Back", @coach, :'data-role' => 'button', :'data-inline' => false %>

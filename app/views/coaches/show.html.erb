@@ -39,22 +39,17 @@
   <b>Teams:</b>
   <% if @coach.teams.count > 0 %>
     <%= @coach.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>
+    <ul data-role="listview" data-inset="true" data-filter="true">
+      <% @coach.teams.each do |t| %>
+        <li><%= link_to(t.formalname, t) %></li>
+      <% end %>
+    </ul>
   <% else %>
     Not currently on any coaching staff.
   <% end %>
 </p>
 
 
-<div class="ui-grid-<%= @coach.teams.count > -1 ? 'b' : 'a' %>">
-  <div class="ui-block-a">
-    <%= link_to 'Edit', edit_coach_path(@coach), :'data-role' => 'button' %>
-  </div>
-  <% if @coach.teams.count > -1 %>
-    <div class="ui-block-b">
-      <%= link_to 'Teams', teams_coach_path(@coach), :'data-role' => 'button' %>
-    </div>
-  <% end %>
-  <div class="ui-block-<%= @coach.teams.count > -1 ? 'c' : 'b' %>">
-    <%= link_to 'Back', coaches_path, :'data-role' => 'button' %>
-  </div>
-</div>
+<%= link_to 'Edit', edit_coach_path(@coach), :'data-role' => 'button', :'data-inline' => true %>
+<%= link_to 'Teams', teams_coach_path(@coach), :'data-role' => 'button', :'data-inline' => true %>
+<%= link_to 'Back', coaches_path, :'data-role' => 'button', :'data-inline' => true %>

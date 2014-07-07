@@ -1,24 +1,27 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Team:</strong>
-  <%= @team.formalname %>
-</p>
+<div data-role="header">
+<h1><%=h @team.formalname %></h1>
+</div>
 
-<p>
-  <strong>Team Web Site:</strong>
-  <%= @team.url %>
-</p>
-
-<p>
-  <strong>Team Twitter Handle:</strong>
-  <%= @team.twitter %>
-</p>
+<ul data-role="listview" data-inset="true">
+  <% if !@team.url.blank? %>
+    <li><a  href="<%= sprintf("%s", @team.url) %>">Team Web Site</a><span class="ui-li-aside data-rel="external""><%= @team.url %></span></li>
+  <% end %>
+  <% if !@team.twitter.blank? %>
+    <li><a  href="<%= sprintf("https://twitter.com/%s", @team.twitter.delete("@")) %>" data-rel="external">Team Twitter Handle</a><span class="ui-li-aside"><%= @team.twitter %></span></li>
+  <% end %>
+  <li><a href="#">Coaching Staff</a></li>
+  <li><%#= link_to 'Coaching Staff', staff_team(@team) %></a></li>
+  <li><a href="#">Roster</a></li>
+  <li><a href="#">Schedule</a></li>
+</ul>
 
 <p>
   <strong>Active:</strong>
   <%= @team.active %>
 </p>
 
-<%= link_to 'Edit', edit_team_path(@team), :'data-role' => 'button' %>
-<%= link_to 'Back', teams_path, :'data-role' => 'button' %>
+<h2>Team Administration</h2>
+<%= link_to 'Edit', edit_team_path(@team), :'data-role' => 'button', :'data-inline' => "true" %>
+<%= link_to 'Back', teams_path, :'data-role' => 'button', :'data-inline' => "true" %>
