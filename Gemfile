@@ -40,3 +40,7 @@ gem 'spring',        group: :development
 
 # jQuery Mobile
 gem 'jquery_mobile_rails'
+
+# Font Awesome
+#gem 'font-awesome-less'
+gem 'font-awesome-rails'
