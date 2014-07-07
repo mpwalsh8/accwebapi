@@ -5,6 +5,7 @@
     <tr>
       <th>Team</th>
       <th>Season</th>
+      <th>Coaches</th>
       <th>Web Site</th>
       <th>Twitter Handle</th>
       <th>Active</th>
@@ -17,6 +18,7 @@
       <tr>
         <td><%= team.formalname %></td>
         <td><%= team.season.camelize %></td>
+        <td><%= team.coaches.count %></td>
         <td><%= team.url %></td>
         <td><%= team.twitter %></td>
         <td><%= team.active%></td>

@@ -1,0 +1,22 @@
+<h1><%=h @team.formalname %> Coaching Staff</h1>
+
+<% if @team.coaches.count > 0 %>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email Address</th>
+      <th>Twitter Handle</th>
+    <tr>
+    <% for coach in @team.coaches do %>
+      <tr>
+        <td><%= link_to coach.fullname, coach %></td>
+        <td><%=h coach.email %></td>
+        <td><%=h coach.twitter %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <p>No coaches on staff.</p>
+<% end %>
+
+<p><%= link_to 'Back', @team %></p>

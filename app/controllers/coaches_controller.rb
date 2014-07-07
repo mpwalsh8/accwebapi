@@ -21,6 +21,12 @@ class CoachesController < ApplicationController
   def edit
   end
 
+  # GET /coaches/1/teams
+  def teams
+    @coach = Coach.find(params[:id])
+    @teams = @coach.teams
+  end
+
   # POST /coaches
   # POST /coaches.json
   def create
@@ -35,6 +41,45 @@ class CoachesController < ApplicationController
         format.json { render json: @coach.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /coaches/1/team_add?team_id=2
+  # (note no real query string, just convenient notation for parameters)
+  # ?POST /coaches.json
+  def team_add
+    #  Convert ids from routing to object
+    @coach = Coach.find(params[:id])
+    @team = Team.find(params[:team])
+
+    unless @coach.is_on_staff?(@team)
+      #  add team to list using << operator
+      @coach.teams << @team
+      flash[:notice] = 'Team was successfully added.'
+    else
+      flash[:error] = 'Coach was already on staff.'
+    end
+    redirect_to :action => :teams, :id => @coach
+  end
+
+  # POST /coaches/1/team_remove?teams[]=
+  def team_remove
+    #  Convert ids from routing to object
+    @coach = Coach.find(params[:id])
+
+    #  Get list of teams to remove from query string
+    teams_ids = params[:teams]
+
+    unless teams_ids.blank?
+      teams_ids.each do |team_id|
+      team = Team.find(team_id)
+        if @coach.is_on_staff?(team)
+          logger.info("Removing coach from team #{team.id}.")
+          @coach.teams.delete(team)
+          flash[:notice] = 'Team was successfully deleted.'
+        end
+      end
+    end
+    redirect_to :action => :teams, :id => @coach
   end
 
   # PATCH/PUT /coaches/1

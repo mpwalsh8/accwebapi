@@ -1,0 +1,25 @@
+<h1>Listing coaches_teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Headcoach</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coaches_teams.each do |coaches_team| %>
+      <tr>
+        <td><%= coaches_team.headcoach %></td>
+        <td><%= link_to 'Show', coaches_team %></td>
+        <td><%= link_to 'Edit', edit_coaches_team_path(coaches_team) %></td>
+        <td><%= link_to 'Destroy', coaches_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coaches team', new_coaches_team_path %>

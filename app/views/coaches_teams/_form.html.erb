@@ -1,0 +1,31 @@
+<%= form_for(@coaches_team) do |f| %>
+  <% if @coaches_team.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@coaches_team.errors.count, "error") %> prohibited this coaches_team from being saved:</h2>
+
+      <ul>
+      <% @coaches_team.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :team_id %>
+    <%= f.collection_select :team_id, Team.all, :id, :formalname %>
+  </div>
+
+  <div class="field">
+    <%= f.label :coach_id %>
+    <%= f.collection_select :coach_id, Coach.all, :id, :lastcommafirst %>
+  </div>
+
+  <div class="field">
+    <%= f.label :headcoach %><br>
+    <%= f.check_box :headcoach %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

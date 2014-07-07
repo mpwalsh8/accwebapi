@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703015655) do
+ActiveRecord::Schema.define(version: 20140704233349) do
 
   create_table "athletes", force: true do |t|
     t.string   "firstname"
@@ -41,6 +41,16 @@ ActiveRecord::Schema.define(version: 20140703015655) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "coaches_teams", force: true do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "coach_id",   null: false
+    t.boolean  "headcoach"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "coaches_teams", ["coach_id", "team_id"], name: "index_coaches_teams_on_coach_id_and_team_id", unique: true
 
   create_table "rosters", force: true do |t|
     t.integer  "team_id"

@@ -1,13 +1,32 @@
 Rails.application.routes.draw do
+  resources :coaches_teams
+
   resources :sports
 
-  resources :staffs
+  #resources :teams, :member => { :staff => :get }
+  resources :teams do
+    member do
+      get 'staff'
+    end
+  end
 
-  resources :rosters
+  #resources :teams
 
-  resources :teams
+  #resources :coaches
 
-  resources :coaches
+  #resources :coaches, :has_many => [ :teams ],
+  #  :member => { :teams => :get, :team_add => :post,
+  #  :team_remove => :post }
+
+  resources :coaches do
+    #resources :teams do
+      member do
+        get :teams
+        post 'team_add'
+        post 'team_remove'
+      end
+    #end
+  end
 
   resources :athletes
 

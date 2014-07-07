@@ -1,0 +1,39 @@
+<h1><%= @coach.fullname %>'s Teams</h1>
+
+<% if @teams.length > 0 %>
+  <%= form_tag(team_remove_coach_path(@coach)) do %>
+  <table>
+    <tr>
+      <th>Team</th>
+      <th>Remove?</th>
+    </tr>
+  <% for team in @teams do %>
+    <tr>
+      <td><%=h team.formalname %></td>
+      <td><%= check_box_tag "teams[]", team.id %></td>
+    </tr>
+  <% end %>
+  </table>
+  <br />
+  <%= submit_tag 'Remove checked teams' %>
+  <% end %>
+<% else %>
+<p>Not on any coaching staffs yet.</p>
+<% end %>
+
+<h2>Add to coaching staff</h2>
+
+<% if @coach.teams.count < Team.count then %>
+
+  <%= form_tag(team_add_coach_path(@coach)) do %>
+    <%= select_tag(:team, options_from_collection_for_select(@coach.is_not_on_staff, :id, :formalname)) %>
+    <%= submit_tag 'Add to Staff' %>
+  <% end %>
+<% else %>
+  <p><%=h @coach.fullname %> is on every staff.</p>
+  <p>Coach Teams Count:  <%=h @coach.teams.count %></p>
+  <p>Team Count:  <%=h @teams.count %></p>
+  <p>Teams Length:  <%=h @teams.length %></p>
+<% end %>
+
+<p><%= link_to "Back", @coach %></p>

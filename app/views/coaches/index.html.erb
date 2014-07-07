@@ -1,4 +1,4 @@
-<h1>Listing coaches</h1>
+<h1>Listing Coaches</h1>
 
 <table data-role="table" class="ui-responsive">
   <thead>
@@ -7,6 +7,7 @@
       <th>Middlename</th>
       <th>Lastname</th>
       <th>Nickname</th>
+      <th>Teams</th>
       <th>Active</th>
       <th>Email</th>
       <th>Twitter</th>
@@ -21,6 +22,7 @@
         <td><%= coach.middlename %></td>
         <td><%= coach.lastname %></td>
         <td><%= coach.nickname %></td>
+        <td><%= coach.teams.count %></td>
         <td><%= coach.active %></td>
         <td><%= coach.email %></td>
         <td><%= coach.twitter %></td>

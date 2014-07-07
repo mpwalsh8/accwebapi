@@ -21,6 +21,16 @@ class TeamsController < ApplicationController
   def edit
   end
 
+  # GET /teams/1/staff
+  def staff
+    @team = Team.find(params[:id])
+  end
+
+  # GET /teams/1/roster
+  #def roster
+  #  @team = Team.find(params[:id])
+  #end
+
   # POST /teams
   # POST /teams.json
   def create
