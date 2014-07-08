@@ -1,38 +1,5 @@
 <h1>Teams</h1>
 
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Team</th>
-      <th>Season</th>
-      <th>Coaches</th>
-      <th>Web Site</th>
-      <th>Twitter Handle</th>
-      <th>Active</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.formalname %></td>
-        <td><%= team.season.camelize %></td>
-        <td><%= team.coaches.count %></td>
-        <td><%= team.url %></td>
-        <td><%= team.twitter %></td>
-        <td><%= team.active%></td>
-        <td><%= link_to 'Show', team, :'data-role' => 'button', :'data-icon' => 'info' %></td>
-        <td><%= link_to 'Edit', edit_team_path(team), :'data-role' => 'button', :'data-icon' => 'refresh' %></td>
-        <td><%= link_to 'Destroy', team, :'data-role' => 'button', :'data-icon' => 'delete', method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
--->
-
-<h2>Coaching Staff</h2>
 <ul data-role="listview" data-inset="true" data-filter="true">
   <% @teams.each do |team| %>
     <li><%= link_to team.formalname, team %></li>

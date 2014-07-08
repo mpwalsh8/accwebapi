@@ -6,13 +6,12 @@
 
 <ul data-role="listview" data-inset="true">
   <% if !@team.url.blank? %>
-    <li><a  href="<%= sprintf("%s", @team.url) %>">Team Web Site</a><span class="ui-li-aside data-rel="external""><%= @team.url %></span></li>
+    <li><a  href="<%= sprintf("%s", @team.url) %>">Team Web Site</a><span class="ui-li-aside" data-rel="external""><%= @team.url %></span></li>
   <% end %>
   <% if !@team.twitter.blank? %>
     <li><a  href="<%= sprintf("https://twitter.com/%s", @team.twitter.delete("@")) %>" data-rel="external">Team Twitter Handle</a><span class="ui-li-aside"><%= @team.twitter %></span></li>
   <% end %>
-  <li><a href="#">Coaching Staff</a></li>
-  <li><%#= link_to 'Coaching Staff', staff_team(@team) %></a></li>
+  <li><%= link_to 'Coaching Staff', staff_team_path(@team) %></a></li>
   <li><a href="#">Roster</a></li>
   <li><a href="#">Schedule</a></li>
 </ul>

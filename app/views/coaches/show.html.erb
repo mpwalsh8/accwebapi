@@ -1,53 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>First Name:</strong>
-  <%= @coach.firstname %>
-</p>
+<div data-role="header">
+<h1><%=h @coach.displayname %></h1>
+</div>
 
-<p>
-  <strong>Middle Name:</strong>
-  <%= @coach.middlename %>
-</p>
+<ul data-role="listview" data-inset="true">
+  <% if !@coach.email.blank? %>
+    <li><a  href="<%= sprintf("mailto:%s", @coach.email) %>">Email Address</a><span class="ui-li-aside" data-rel="external""><%= @coach.email %></span></li>
+  <% end %>
+  <% if !@coach.twitter.blank? %>
+    <li><a  href="<%= sprintf("https://twitter.com/%s", @coach.twitter.delete("@")) %>" data-rel="external">Twitter Handle</a><span class="ui-li-aside"><%= @coach.twitter %></span></li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Last Name:</strong>
-  <%= @coach.lastname %>
-</p>
-
-<p>
-  <strong>Nickname:</strong>
-  <%= @coach.nickname %>
-</p>
-
-<p>
-  <strong>Active:</strong>
-  <%= @coach.active %>
-</p>
-
-<p>
-  <strong>Email Address:</strong>
-  <%= @coach.email %>
-</p>
-
-<p>
-  <strong>Twitter Handle:</strong>
-  <%= @coach.twitter %>
-</p>
-
-<p>
-  <b>Teams:</b>
+  <h3>Teams:</h3>
   <% if @coach.teams.count > 0 %>
-    <%= @coach.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>
+    <%#= @coach.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>
     <ul data-role="listview" data-inset="true" data-filter="true">
       <% @coach.teams.each do |t| %>
-        <li><%= link_to(t.formalname, t) %></li>
+        <% hc = CoachesTeam.find_by(:team_id => t.id, :coach_id => @coach.id) %>
+        <li><%= link_to(t.formalname, t) %><span class="ui-li-aside"><%= hc.headcoach ? "Head Coach" : "" %></span></li>
       <% end %>
     </ul>
   <% else %>
     Not currently on any coaching staff.
   <% end %>
-</p>
 
 
 <%= link_to 'Edit', edit_coach_path(@coach), :'data-role' => 'button', :'data-inline' => true %>
