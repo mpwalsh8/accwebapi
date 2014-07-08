@@ -1,5 +1,8 @@
-<h1>New athlete</h1>
+<h1>New Athlete</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', athletes_path %>
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Back', athletes_path, :'data-role' => "button", :'data-icon' => "back" %>
+</div>
+
