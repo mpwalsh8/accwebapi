@@ -16,11 +16,9 @@
   <li><a href="#">Schedule</a></li>
 </ul>
 
-<p>
-  <strong>Active:</strong>
-  <%= @team.active %>
-</p>
-
 <h2>Team Administration</h2>
-<%= link_to 'Edit', edit_team_path(@team), :'data-role' => 'button', :'data-inline' => "true" %>
-<%= link_to 'Back', teams_path, :'data-role' => 'button', :'data-inline' => "true" %>
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Back', teams_path, :'data-role' => 'button', :'data-icon' => "back" %>
+  <%= link_to 'Edit', edit_team_path(@team), :'data-role' => 'button', :'data-icon' => "edit" %>
+</div>
+

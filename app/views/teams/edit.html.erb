@@ -1,13 +1,9 @@
-<h1>Editing Team</h1>
+<h1>Edit Team Profile</h1>
 
 <%= render 'form' %>
 
-<div class="ui-grid-a">
-  <div class="ui-block-a">
-    <%= link_to 'Show', @team, :'data-role' => 'button' %>
-  </div>
-  <div class="ui-block-b">
-    <%= link_to 'Back', teams_path, :'data-role' => 'button' %>
-  </div>
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Back', teams_path, :'data-role' => 'button', :'data-icon' => "back" %>
+  <%= link_to 'Show', @team, :'data-role' => 'button', :'data-icon' => "eye" %>
 </div>
 

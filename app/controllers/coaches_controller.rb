@@ -58,6 +58,12 @@ class CoachesController < ApplicationController
     else
       flash[:error] = 'Coach was already on staff.'
     end
+
+    # Update Head Coach
+    @CoachTeam = CoachesTeam.find_by(:coach_id => @coach.id, :team_id => @team.id)
+    @CoachTeam.update_attributes(:headcoach => params[:headcoach])
+
+
     redirect_to :action => :teams, :id => @coach
   end
 

@@ -1,5 +1,19 @@
 <h1><%= @coach.fullname %>'s Teams</h1>
 
+  <% if @coach.teams.count > 0 %>
+    <%#= @coach.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>
+    <ul data-role="listview" data-inset="true" data-filter="true">
+      <% @coach.teams.each do |t| %>
+        <% hc = CoachesTeam.find_by(:team_id => t.id, :coach_id => @coach.id) %>
+        <li><%= link_to(t.formalname, t) %><span class="ui-li-aside"><%= hc.headcoach ? "Head Coach" : "" %></span></li>
+      <% end %>
+    </ul>
+  <% else %>
+    Not currently on any coaching staff.
+  <% end %>
+
+<h2>Coach Administration</h2>
+
 <% if @teams.length > 0 %>
   <%= form_tag(team_remove_coach_path(@coach)) do %>
   <table>
@@ -15,25 +29,49 @@
   <% end %>
   </table>
   <br />
-  <%= submit_tag 'Remove checked teams' %>
+  <%= submit_tag 'Remove From Staff' %>
   <% end %>
 <% else %>
 <p>Not on any coaching staffs yet.</p>
 <% end %>
 
-<h2>Add to coaching staff</h2>
+<h2>Add Coach to Coaching Staff</h2>
 
 <% if @coach.teams.count < Team.count then %>
 
   <%= form_tag(team_add_coach_path(@coach)) do %>
-    <%= select_tag(:team, options_from_collection_for_select(@coach.is_not_on_staff, :id, :formalname)) %>
-    <%= submit_tag 'Add to Staff', :'data-role' => 'button', :'data-inline' => false %>
+    <div class="field">
+      <%= label_tag "Select Team" %>
+      <%= select_tag(:team, options_from_collection_for_select(@coach.is_not_on_staff, :id, :formalname)) %>
+    </div>
+    <div data-role="fieldcontain" class="field">
+      <%= label_tag "Head Coach" %>
+      <%= select_tag(:headcoach, options_for_select([["Yes", true], ["No", false]]), :'data-role' => "slider") %>
+    </div>
+
+    <div class="field">
+      <%= submit_tag 'Add To Staff', :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true" %>
+    </div>
   <% end %>
 <% else %>
   <p><%=h @coach.fullname %> is on every staff.</p>
-  <p>Coach Teams Count:  <%=h @coach.teams.count %></p>
-  <p>Team Count:  <%=h @teams.count %></p>
-  <p>Teams Length:  <%=h @teams.length %></p>
 <% end %>
 
-<%= link_to "Back", @coach, :'data-role' => 'button', :'data-inline' => false %>
+<h2>Remove Coach from Coaching Staff</h2>
+
+  <% if @coach.teams.count > 0 %>
+  <%= form_tag(team_remove_coach_path(@coach)) do %>
+    <div class="field">
+      <%= select_tag("teams[]", options_from_collection_for_select(@coach.is_on_staff, :id, :formalname), :multiple => true, :prompt => "Select Teams", :'data-native-menu' => false ) %>
+    </div>
+    <div data-role="fieldcontain" class="field">
+      <%= submit_tag 'Remove From Staff', :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true", :'data-icon' => "delete" %>
+    </div>
+  <% end %>
+  <% else %>
+    Not currently on any coaching staff.
+  <% end %>
+
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to "Back", @coach, :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true", :'data-icon' => "back" %>
+</div>

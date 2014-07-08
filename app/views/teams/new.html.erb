@@ -1,5 +1,8 @@
-<h1>New Team</h1>
+<h1>Add Team</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', teams_path, :'data-role' => 'button' %>
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Back', teams_path, :'data-role' => 'button', :'data-icon' => "back" %>
+</div>
+

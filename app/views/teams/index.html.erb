@@ -7,20 +7,21 @@
   <%#= content_tag(:li, fa_icon("check", text: "Bulleted list item")) %>
 </ul>
 
-<h2>Team Administration</h2>
-
+<!--  Admin Block -->
 <div data-role="collapsible-set">
-    <% @teams.each do |team| %>
-<div data-role="collapsible" data-collapsed="true">
-  <h2><%= h team.formalname %></h2>
+  <h2 role="list-divider">Team Administration</h2>
+  <% @teams.each do |team| %>
+    <div data-role="collapsible" data-iconpos="right" data-collapsed="true">
+      <h2><%= h team.formalname %></h2>
       <%#= link_to 'Show', team, :'data-role' => 'button', :'data-icon' => 'info', :'data-inline' => "true" %>
-         <%= link_to 'Edit', edit_team_path(team), :'data-role' => 'button', :'data-icon' => 'refresh', :'data-inline' => "true" %>
-         <%= link_to 'Delete', team, :'data-role' => 'button', :'data-icon' => 'delete', :'data-inline' => "true", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_team_path(team), :'data-role' => 'button', :'data-icon' => 'edit', :'data-inline' => "true" %>
+      <%= link_to 'Delete', team, :'data-role' => 'button', :'data-icon' => 'delete', :'data-inline' => "true", method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  <% end %>
 </div>
-    <% end %>
+<!-- Footer -->
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Add Team', new_team_path, :'data-role' => 'button', :'data-icon' => 'plus', :'data-inline' => "true" %>
+  <%#= link_to fa_icon("camera-retro fw") + 'New Team', new_team_path, :'data-role' => 'button', :'data-icon' => 'plus' %>
 </div>
-
-<br>
-
-<%= link_to 'New Team', new_team_path, :'data-role' => 'button', :'data-icon' => 'plus' %>
-<%#= link_to fa_icon("camera-retro fw") + 'New Team', new_team_path, :'data-role' => 'button', :'data-icon' => 'plus' %>
+<!--  Admin Block -->

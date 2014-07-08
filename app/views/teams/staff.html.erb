@@ -1,6 +1,5 @@
 <h1><%=h @team.formalname %> Coaching Staff</h1>
 
-<p>
   <% if @team.coaches.count > 0 %>
     <ul data-role="listview" data-inset="true" data-filter="true">
       <% @team.coaches.each do |c| %>
@@ -9,9 +8,11 @@
       <% end %>
     </ul>
   <% else %>
-    Not currently on any coaching staff.
+    No coaches on coaching staff.
   <% end %>
-</p>
 
 
-<%= link_to 'Back', @team, :'data-role' => 'button', :'data-inline' => "true" %>
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Back', @team, :'data-role' => 'button', :'data-icon' => "back" %>
+</div>
+

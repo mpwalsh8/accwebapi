@@ -1,6 +1,6 @@
 <h1>Coaches</h1>
 
-<ul data-role="listview" data-inset="true" data-filter="true">
+<ul data-role="listview" data-inset="true" data-filter="true" data-autodividers="true">
   <% @coaches.each do |coach| %>
     <li><%= link_to coach.fullname, coach %></li>
   <% end %>
@@ -9,7 +9,7 @@
 
 <h2>Coach Administration</h2>
 
-<div data-role="collapsible-set">
+<div data-role="collapsible-set" data-autodividers="true">
     <% @coaches.each do |coach| %>
 <div data-role="collapsible" data-collapsed="true">
   <h2><%= h coach.fullname %></h2>
@@ -20,6 +20,7 @@
     <% end %>
 </div>
 
-<br>
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'New Coach', new_coach_path, :'data-role' => 'button', :'data-icon' => 'plus' %>
+</div>
 
-<%= link_to 'New Coach', new_coach_path, :'data-role' => 'button', :'data-icon' => 'plus' %>

@@ -23,6 +23,11 @@ class Coach < ActiveRecord::Base
     self.teams.include?(team)
   end
 
+  #  Get all teams coach is on staff of
+  def is_on_staff
+    self.teams
+  end
+
   #  Get all teams coach is not on staff of
   def is_not_on_staff
     #Team.find(:all) - self.teams
