@@ -12,29 +12,6 @@
     Not currently on any coaching staff.
   <% end %>
 
-<h2>Coach Administration</h2>
-
-<% if @teams.length > 0 %>
-  <%= form_tag(team_remove_coach_path(@coach)) do %>
-  <table>
-    <tr>
-      <th>Team</th>
-      <th>Remove?</th>
-    </tr>
-  <% for team in @teams do %>
-    <tr>
-      <td><%=h team.formalname %></td>
-      <td><%= check_box_tag "teams[]", team.id %></td>
-    </tr>
-  <% end %>
-  </table>
-  <br />
-  <%= submit_tag 'Remove From Staff' %>
-  <% end %>
-<% else %>
-<p>Not on any coaching staffs yet.</p>
-<% end %>
-
 <h2>Add <%= @coach.fullname %> to Coaching Staff</h2>
 
 <% if @coach.teams.count < Team.count then %>
@@ -57,7 +34,7 @@
   <p><%=h @coach.fullname %> is on every staff.</p>
 <% end %>
 
-<h2>Remove Coach from Coaching Staff</h2>
+<h2>Remove <%= @coach.fullname %> from Coaching Staff</h2>
 
   <% if @coach.teams.count > 0 %>
   <%= form_tag(team_remove_coach_path(@coach)) do %>

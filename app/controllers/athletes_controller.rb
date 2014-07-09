@@ -1,5 +1,5 @@
 class AthletesController < ApplicationController
-  before_action :set_athlete, only: [:show, :edit, :update, :destroy]
+  before_action :set_athlete, only: [:show, :edit, :update, :destroy, :teams]
 
   # GET /athletes
   # GET /athletes.json
@@ -35,6 +35,51 @@ class AthletesController < ApplicationController
         format.json { render json: @athlete.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # POST /athletes/1/team_add?team_id=2
+  # (note no real query string, just convenient notation for parameters)
+  # ?POST /athletes.json
+  def team_add
+    #  Convert ids from routing to object
+    @athlete = Athlete.find(params[:id])
+    @team = Team.find(params[:team])
+
+    unless @athlete.is_on_roster?(@team)
+      #  add team to list using << operator
+      @athlete.teams << @team
+      flash[:notice] = 'Team was successfully added.'
+    else
+      flash[:error] = 'Athlete was already on roster.'
+    end
+
+    # Update Team Captain
+    @AthleteTeam = AthletesTeam.find_by(:athlete_id => @athlete.id, :team_id => @team.id)
+    @AthleteTeam.update_attributes(:captain => params[:captain])
+
+
+    redirect_to :action => :teams, :id => @athlete
+  end
+
+  # POST /athletes/1/team_remove?teams[]=
+  def team_remove
+    #  Convert ids from routing to object
+    @athlete = Athlete.find(params[:id])
+
+    #  Get list of teams to remove from query string
+    teams_ids = params[:teams]
+
+    unless teams_ids.blank?
+      teams_ids.each do |team_id|
+      team = Team.find(team_id)
+        if @athlete.is_on_roster?(team)
+          logger.info("Removing athlete from team #{team.id}.")
+          @athlete.teams.delete(team)
+          flash[:notice] = 'Team was successfully deleted.'
+        end
+      end
+    end
+    redirect_to :action => :teams, :id => @athlete
   end
 
   # PATCH/PUT /athletes/1

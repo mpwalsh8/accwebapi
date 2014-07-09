@@ -27,9 +27,9 @@ class TeamsController < ApplicationController
   end
 
   # GET /teams/1/roster
-  #def roster
-  #  @team = Team.find(params[:id])
-  #end
+  def roster
+    @team = Team.find(params[:id])
+  end
 
   # POST /teams
   # POST /teams.json

@@ -1,0 +1,55 @@
+<%= puts params %>
+<h1><%= @athlete.displayname %>'s Teams</h1>
+
+  <% if @athlete.teams.count > 0 %>
+    <%#= @athlete.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>
+    <ul data-role="listview" data-inset="true" data-filter="true">
+      <% @athlete.teams.each do |t| %>
+        <% hc = AthletesTeam.find_by(:team_id => t.id, :athlete_id => @athlete.id) %>
+        <li><%= link_to(t.formalname, t) %><span class="ui-li-aside"><%= hc.captain ? "Captain" : "" %></span></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <%= @athlete.firstname %> is not currently on any team roster.
+  <% end %>
+
+<h2>Add <%#= @athlete.displayname %> to Team Roster</h2>
+
+<% if @athlete.teams.count < Team.count then %>
+
+  <%= form_tag(team_add_athlete_path(@athlete)) do %>
+    <div class="field">
+      <%= label_tag "Select Team" %>
+      <%= select_tag(:team, options_from_collection_for_select(@athlete.is_not_on_roster, :id, :formalname)) %>
+    </div>
+    <div data-role="fieldcontain" class="field">
+      <%= label_tag "Captain" %>
+      <%= select_tag(:captain, options_for_select([["Yes", true], ["No", false]]), :'data-role' => "slider") %>
+    </div>
+
+    <div class="field">
+      <%= submit_tag 'Add To Roster', :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true" %>
+    </div>
+  <% end %>
+<% else %>
+  <p><%#=h @athlete.displayname %> is on every roster.</p>
+<% end %>
+
+
+<% if @athlete.teams.count > 0 %>
+  <h2>Remove <%#= @athlete.displayname %> from Team Roster</h2>
+  <%= form_tag(team_remove_athlete_path(@athlete)) do %>
+    <div class="field">
+      <%= select_tag("teams[]", options_from_collection_for_select(@athlete.is_on_roster, :id, :formalname), :multiple => true, :prompt => "Select Teams", :'data-native-menu' => false ) %>
+    </div>
+    <div data-role="fieldcontain" class="field">
+      <%= submit_tag 'Remove From Roster', :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true", :'data-icon' => "delete" %>
+    </div>
+  <% end %>
+<% else %>
+  <!--<%#= @athlete.firstname %> is not currently on any team roster.-->
+<% end %>
+
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to "Back", @athlete, :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true", :'data-icon' => "back" %>
+</div>

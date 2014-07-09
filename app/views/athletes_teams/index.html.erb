@@ -1,0 +1,29 @@
+<h1>Listing athletes_teams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Team</th>
+      <th>Athlete</th>
+      <th>Captain</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @athletes_teams.each do |athletes_team| %>
+      <tr>
+        <td><%= athletes_team.team_id %></td>
+        <td><%= athletes_team.athlete_id %></td>
+        <td><%= athletes_team.captain %></td>
+        <td><%= link_to 'Show', athletes_team %></td>
+        <td><%= link_to 'Edit', edit_athletes_team_path(athletes_team) %></td>
+        <td><%= link_to 'Destroy', athletes_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Athletes team', new_athletes_team_path %>

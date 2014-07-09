@@ -1,0 +1,18 @@
+<h1><%=h @team.formalname %> Team Roster</h1>
+
+  <% if @team.athletes.count > 0 %>
+    <ul data-role="listview" data-inset="true" data-filter="true">
+      <% @team.athletes.each do |c| %>
+        <% hc = AthletesTeam.find_by(:team_id => @team.id, :athlete_id => c.id) %>
+        <li><%= link_to(c.fullname, c) %><span class="ui-li-aside"><%= hc.captain ? "Captain" : "" %></span></li>
+      <% end %>
+    </ul>
+  <% else %>
+    No athletes on team roster.
+  <% end %>
+
+
+<div data-role="footer" data-position="fixed" class="ui-bar">
+  <%= link_to 'Back', @team, :'data-role' => 'button', :'data-icon' => "back" %>
+</div>
+
