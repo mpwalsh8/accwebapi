@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
+  resources :athletes_teams
+
   resources :coaches_teams
 
   resources :sports
 
-  #resources :teams, :member => { :staff => :get }
   resources :teams do
     member do
       get 'staff'
+    end
+  end
+
+  resources :teams do
+    member do
+      get 'roster'
     end
   end
 
@@ -14,25 +21,27 @@ Rails.application.routes.draw do
 
   #resources :coaches
 
-  #resources :coaches, :has_many => [ :teams ],
-  #  :member => { :teams => :get, :team_add => :post,
-  #  :team_remove => :post }
-
   resources :coaches do
-    #resources :teams do
-      member do
-        get :teams
-        post 'team_add'
-        post 'team_remove'
-      end
-    #end
+    member do
+      get :teams
+      post 'team_add'
+      post 'team_remove'
+    end
   end
 
-  resources :athletes
+  #resources :athletes
+
+  resources :athletes do
+    member do
+      get :teams
+      post 'team_add'
+      post 'team_remove'
+    end
+  end
 
   get 'home/index'
 
-  root to: 'teams#index'
+  root to: 'sports#index'
 
   #map.root :controller => "athletes", :action => "index"
   # The priority is based upon order of creation: first created -> highest priority.
