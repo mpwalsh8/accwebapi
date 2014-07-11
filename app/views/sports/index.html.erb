@@ -1,27 +1,23 @@
-<h1>Listing sports</h1>
+<h3 class="ui-bar ui-bar-b ui-corner-all">Sports</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Imageurl</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<ul data-role="listview" data-inset="true" data-filter="true" data-autodividers="true">
+  <% @sports.each do |sport| %>
+    <li><%= link_to sport.name, sport %></li>
+  <% end %>
+</ul>
 
-  <tbody>
+<h3 class="ui-bar ui-bar-b ui-corner-all">Sports Administration</h3>
+
+<div data-role="collapsible-set" data-autodividers="true">
     <% @sports.each do |sport| %>
-      <tr>
-        <td><%= sport.name %></td>
-        <td><%= sport.imageurl %></td>
-        <td><%= link_to 'Show', sport %></td>
-        <td><%= link_to 'Edit', edit_sport_path(sport) %></td>
-        <td><%= link_to 'Destroy', sport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div data-role="collapsible" data-collapsed="true" data-iconpos="right" data-mini="true">
+  <h3><%= h sport.name %></h3>
+         <%= link_to 'Edit', edit_sport_path(sport), :'data-role' => 'button', :'data-icon' => 'edit', :'data-inline' => "true", :'data-mini' => "true" %>
+         <%= link_to 'Delete', sport, :'data-role' => 'button', :'data-icon' => 'delete', :'data-inline' => "true", method: :delete, data: { confirm: 'Are you sure?' }, :'data-mini' => "true" %>
+</div>
     <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to 'New Sport', new_sport_path %>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
+  <%= link_to 'New Sport', new_sport_path, :'data-role' => "button", :'data-icon' => "plus" %>
+</div>

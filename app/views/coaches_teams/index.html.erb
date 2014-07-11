@@ -1,9 +1,11 @@
-<h1>Listing coaches_teams</h1>
+<h1>Listing Team Coaches</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Headcoach</th>
+      <th>Team ID</th>
+      <th>Coach ID</th>
+      <th>Head Coach</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -11,6 +13,8 @@
   <tbody>
     <% @coaches_teams.each do |coaches_team| %>
       <tr>
+        <td><%= coaches_team.team.formalname %></td>
+        <td><%= coaches_team.coach.fullname %></td>
         <td><%= coaches_team.headcoach %></td>
         <td><%= link_to 'Show', coaches_team %></td>
         <td><%= link_to 'Edit', edit_coaches_team_path(coaches_team) %></td>
@@ -22,4 +26,7 @@
 
 <br>
 
-<%= link_to 'New Coaches team', new_coaches_team_path %>
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
+  <%= link_to 'Add Coach to Team', new_coaches_team_path, :'data-role' => "button", :'data-icon' => "plus" %>
+</div>
+

@@ -11,15 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :name, "Name" %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :imageurl %><br>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :imageurl, "Image URL" %><br>
     <%= f.text_field :imageurl %>
   </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :active, "Active Sport" %><br>
+    <%= f.check_box :active %>
+  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Sport"%>
   </div>
 <% end %>

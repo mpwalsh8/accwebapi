@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :team_id %><br>
-    <%= f.number_field :team_id %>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :team_id, "Team" %><br>
+    <%= f.collection_select :team_id, Team.all, :id, :formalname %>
   </div>
-  <div class="field">
-    <%= f.label :athlete_id %><br>
-    <%= f.number_field :athlete_id %>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :athlete_id, "Athlete" %><br>
+    <%= f.collection_select :athlete_id, Athlete.all, :id, :lastcommafirst%>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :captain %><br>
     <%= f.check_box :captain %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Athlete Team Assignment" %>
   </div>
 <% end %>

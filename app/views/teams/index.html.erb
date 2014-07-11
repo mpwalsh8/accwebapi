@@ -1,4 +1,5 @@
-<h1>Teams</h1>
+<h3 class="ui-bar ui-bar-b ui-corner-all">Teams</h3>
+
 
 <ul data-role="listview" data-inset="true" data-filter="true">
   <% @teams.each do |team| %>
@@ -8,19 +9,20 @@
 </ul>
 
 <!--  Admin Block -->
-<div data-role="collapsible-set">
-  <h2 role="list-divider">Team Administration</h2>
+<div data-role="collapsible-set" data-mini="true">
+  <h3 class="ui-bar ui-bar-b ui-corner-all">Team Administration</h3>
+
   <% @teams.each do |team| %>
     <div data-role="collapsible" data-iconpos="right" data-collapsed="true">
       <h2><%= h team.formalname %></h2>
       <%#= link_to 'Show', team, :'data-role' => 'button', :'data-icon' => 'info', :'data-inline' => "true" %>
-      <%= link_to 'Edit', edit_team_path(team), :'data-role' => 'button', :'data-icon' => 'edit', :'data-inline' => "true" %>
-      <%= link_to 'Delete', team, :'data-role' => 'button', :'data-icon' => 'delete', :'data-inline' => "true", method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit', edit_team_path(team), :'data-role' => 'button', :'data-icon' => 'edit', :'data-inline' => "true", :'data-mini' => "true" %>
+      <%= link_to 'Delete', team, :'data-role' => 'button', :'data-icon' => 'delete', :'data-inline' => "true", method: :delete, data: { confirm: 'Are you sure?' }, :'data-mini' => "true" %>
     </div>
   <% end %>
 </div>
 <!-- Footer -->
-<div data-role="footer" data-position="fixed" class="ui-bar">
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
   <%= link_to 'Add Team', new_team_path, :'data-role' => 'button', :'data-icon' => 'plus', :'data-inline' => "true" %>
   <%#= link_to fa_icon("camera-retro fw") + 'New Team', new_team_path, :'data-role' => 'button', :'data-icon' => 'plus' %>
 </div>
