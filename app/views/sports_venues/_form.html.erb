@@ -1,0 +1,26 @@
+<%= form_for(@sports_venue) do |f| %>
+  <% if @sports_venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sports_venue.errors.count, "error") %> prohibited this sports_venue from being saved:</h2>
+
+      <ul>
+      <% @sports_venue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :sport_id, "Sport" %><br>
+    <%= f.collection_select :sport_id, Sport.all, :id, :name %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :venue_id, "Venue" %><br>
+    <%= f.collection_select :venue_id, Venue.all, :id, :name %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit "Add Sport to Venue" %>
+  </div>
+<% end %>

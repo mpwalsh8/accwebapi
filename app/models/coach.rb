@@ -1,6 +1,7 @@
 class Coach < ActiveRecord::Base
   # a coach can coach more than one team
   has_and_belongs_to_many :teams, through: :coaches
+  has_and_belongs_to_many :sports, through: :teams
 
   def fullname
     firstname + " " + lastname

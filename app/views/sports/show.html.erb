@@ -6,16 +6,16 @@
   <%= image_tag(@sport.imageurl, alt: @sport.name) %>
 </figure>
 
-<h1><%= @sport.id %></h1>
 <ul data-role="listview" data-inset="true">
-  <li><%= link_to 'Teams', "#" %></a></li>
-  <% teams = Team.find_by(:sport_id => @sport.id) %>
+  <% @teams = Team.where(:sport_id => @sport.id) %>
   <% @teams.each do |team| %>
-    <li><%= link_to team.formalname, team %></li>
+    <li data-role="list-divider"><%= team.formalname %></li>
+    <li><%= link_to 'Team Profile', team %></li>
+    <li><%= link_to 'Team Roster', roster_team_path(team) %></a></li>
+    <li><%= link_to 'Coaching Staff', staff_team_path(team) %></a></li>
+    <li><%= link_to 'Schedule', "#" %></a></li>
   <% end %>
 
-  <li><%= link_to 'Coaches', "#" %></a></li>
-  <li><%= link_to 'Schedules', "#" %></a></li>
 </ul>
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">

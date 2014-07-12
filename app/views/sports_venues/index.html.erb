@@ -1,0 +1,34 @@
+<h1>Listing Venue Sports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Sport</th>
+      <th>Venue ID</th>
+      <th>Venue</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @sports_venues.each do |sports_venue| %>
+    <%# @venue = Venue.where(:id => sports_venue.venue_id) %>
+<%= debug(@venue) %>
+      <tr>
+        <td><%= sports_venue.sport_id %></td>
+        <td><%= sports_venue.venue_id %></td>
+        <td>*<%#= @venue.name %>*</td>
+        <td><%= link_to 'Show', sports_venue %></td>
+        <td><%= link_to 'Edit', edit_sports_venue_path(sports_venue) %></td>
+        <td><%= link_to 'Destroy', sports_venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
+  <%= link_to 'New Sports Venue', new_sports_venue_path, :'data-role' => "button", :'data-icon' => 'plus' %>
+</div>
+

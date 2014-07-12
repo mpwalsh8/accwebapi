@@ -28,7 +28,7 @@ sports = [
   { name: 'Stunt', imageurl: '/assets/pictograms/Gymnastics-Blk-100x100.png', active: false },
   { name: 'Swiming', imageurl: '/assets/pictograms/Swimming-Blk-100x100.png', active: false },
   { name: 'Tennis', imageurl: '/assets/pictograms/Tennis-Blk-100x100.png', active: false },
-  { name: 'Track and Field', imageurl: '/assets/pictograms/TackFieldPoleVault-Blk-100x100.png', active: false },
+  { name: 'Track and Field', imageurl: '/assets/pictograms/TrackFieldPoleVault-Blk-100x100.png', active: false },
   { name: 'Volleyball', imageurl: '/assets/pictograms/Volleyball-Blk-100x100.png', active: false },
   { name: 'Wrestling', imageurl: '/assets/pictograms/Wrestling-Blk-100x100.png', active: false }
 ]

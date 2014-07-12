@@ -1,0 +1,45 @@
+<%= form_for(@venue) do |f| %>
+  <% if @venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+      <ul>
+      <% @venue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :twitter, "Twitter Handle" %>
+    <%= f.text_field :twitter, type: "text" %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :url, "URL" %>
+    <%= f.text_field :url, type: "url" %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :googlemapsurl, "Google Maps URL" %>
+    <%= f.text_field :googlemapsurl, type: "url" %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone, type: "phone" %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :latlong, "Lat/Long" %>
+    <%= f.text_field :latlong, type: "text" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Save Venue" %>
+  </div>
+<% end %>
