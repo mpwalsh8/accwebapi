@@ -12,16 +12,24 @@
   <% end %>
 
   <div data-role="fieldcontain" class="field">
-    <%= f.label :team_id, "Team" %><br>
+    <%= f.label :team_id, "Team" %>
     <%= f.collection_select :team_id, Team.all, :id, :formalname %>
   </div>
   <div data-role="fieldcontain" class="field">
-    <%= f.label :athlete_id, "Athlete" %><br>
+    <%= f.label :athlete_id, "Athlete" %>
     <%= f.collection_select :athlete_id, Athlete.all, :id, :lastcommafirst%>
   </div>
   <div data-role="fieldcontain" class="field">
-    <%= f.label :captain %><br>
+    <%= f.label :captain %>
     <%= f.check_box :captain %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :jerseynumber, "Jersey Number" %>
+    <%= f.text_field :jerseynumber %>
+  </div>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :position, "Position(s)" %>
+    <%= f.text_field :position %>
   </div>
   <div class="actions">
     <%= f.submit "Save Team Athlete" %>

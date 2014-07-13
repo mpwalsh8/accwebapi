@@ -7,11 +7,28 @@
 </figure>
           
 <ul data-role="listview" data-inset="true">
+  <li data-role="list-divider">Profile</li>
   <%if @athletes_team.captain %>
     <li>Team Captain</li>
   <% end %>
-  <li>Jersey Number:  TBD</li>
-  <li>Position:  TBD</li>
+  <li>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">Jersey Number:</div>
+      <div class="ui-block-b"><%= @athletes_team.jerseynumber %>
+    </div>
+  </li>
+  <li>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">Position(s):</div>
+      <div class="ui-block-b"><%= @athletes_team.position %>
+    </div>
+  </li>
+  <li>
+    <div class="ui-grid-a">
+      <div class="ui-block-a">Graduation Year:</div>
+      <div class="ui-block-b"><%= @athletes_team.athlete.gradyear %>
+    </div>
+  </li>
   <li><%= link_to @athletes_team.team.formalname, team_path(@athletes_team.team_id) %></li>
   <li><%= link_to @athletes_team.athlete.fullname, athlete_path(@athletes_team.athlete_id) %></li>
 </ul>

@@ -69,6 +69,6 @@ class AthletesTeamsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def athletes_team_params
-      params.require(:athletes_team).permit(:team_id, :athlete_id, :captain)
+      params.require(:athletes_team).permit(:team_id, :athlete_id, :captain, :position, :jerseynumber)
     end
 end
