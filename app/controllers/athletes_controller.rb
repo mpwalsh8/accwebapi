@@ -55,7 +55,7 @@ class AthletesController < ApplicationController
 
     # Update Team Captain
     @AthleteTeam = AthletesTeam.find_by(:athlete_id => @athlete.id, :team_id => @team.id)
-    @AthleteTeam.update_attributes(:captain => params[:captain])
+    @AthleteTeam.update_attributes(:captain => params[:captain], :jerseynumber => params[:jerseynumber], :position => params[:position])
 
 
     redirect_to :action => :teams, :id => @athlete

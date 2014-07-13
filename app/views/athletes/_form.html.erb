@@ -11,60 +11,60 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :firstname, "First Name" %>
     <%= f.text_field :firstname %>
   </div>
-  <div class="field">
-    <%= f.label :middlename, "Last Name" %>
+  <div data-role="fieldcontain" class="field">
+    <%= f.label :middlename, "Middle Name" %>
     <%= f.text_field :middlename %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :lastname, "Last Name" %>
     <%= f.text_field :lastname %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :nickname %>
     <%= f.text_field :nickname %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :gender, "Gender" %>
-    <fieldset data-role="controlgroup" data-type="horizontal">
+    <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
       <%= f.radio_button :gender, 'male' %>
       <%= f.label :gender, 'Male', :value => 'male' %>
       <%= f.radio_button :gender, 'female' %>
       <%= f.label :gender, 'Female', :value => 'female' %>
     </fieldset>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :dob, "Date of Birth" %>
     <%= f.text_field :dob, :type => 'date', :'data-role' => 'date', :'data-inline' => 'true' %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :gradyear, "Graduation Year" %>
     <%= f.select :gradyear, (Time.zone.now.year - 2)..(Time.zone.now.year + 4)%>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :active, "Active Student" %>
     <%= f.check_box :active %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :height %>
     <%= f.text_field :height %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :weight %>
     <%= f.text_field :weight %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :email, "Email Address" %>
     <%= f.text_field :email %>
   </div>
-  <div class="field">
+  <div data-role="fieldcontain" class="field">
     <%= f.label :twitter, "Twitter Handle" %>
     <%= f.text_field :twitter %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Save Athlete" %>
   </div>
 <% end %>

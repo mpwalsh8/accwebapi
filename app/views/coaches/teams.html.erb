@@ -1,4 +1,4 @@
-<h1><%= @coach.fullname %>'s Teams</h1>
+<h3 class="ui-bar ui-bar-b ui-corner-all"><%= @coach.fullname %>'s Teams</h3>
 
   <% if @coach.teams.count > 0 %>
     <%#= @coach.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>

@@ -1,5 +1,4 @@
-<%= puts params %>
-<h1><%= @athlete.displayname %>'s Teams</h1>
+<h3 class="ui-bar ui-bar-b ui-corner-all"><%= @athlete.displayname %>'s Teams</h3>
 
   <% if @athlete.teams.count > 0 %>
     <%#= @athlete.teams.collect {|t| link_to(t.formalname, t)}.join(", ").html_safe %>
@@ -13,7 +12,7 @@
     <%= @athlete.firstname %> is not currently on any team roster.
   <% end %>
 
-<h2>Add <%#= @athlete.displayname %> to Team Roster</h2>
+<h3 class="ui-bar ui-bar-b ui-corner-all">Add <%= @athlete.displayname %> to Team Roster</h3>
 
 <% if @athlete.teams.count < Team.count then %>
 
@@ -26,18 +25,25 @@
       <%= label_tag "Captain" %>
       <%= select_tag(:captain, options_for_select([["Yes", true], ["No", false]]), :'data-role' => "slider") %>
     </div>
-
+    <div data-role="fieldcontain" class="field">
+      <%= label_tag "Jersey Number" %>
+      <%= select_tag(:jerseynumber, options_for_select((0..99))) %>
+    </div>
+    <div data-role="fieldcontain" class="field">
+      <%= label_tag "Position(s)" %>
+      <%= text_field_tag(:position) %>
+    </div>
     <div class="field">
       <%= submit_tag 'Add To Roster', :'data-role' => 'button', :'data-inline' => "false", :'data-mini' => "true", :'data-inline' => "true" %>
     </div>
   <% end %>
 <% else %>
-  <p><%#=h @athlete.displayname %> is on every roster.</p>
+  <p><%=h @athlete.displayname %> is on every roster.</p>
 <% end %>
 
 
 <% if @athlete.teams.count > 0 %>
-  <h2>Remove <%#= @athlete.displayname %> from Team Roster</h2>
+  <h3 class="ui-bar ui-bar-b ui-corner-all">Remove <%= @athlete.displayname %> from Team Roster</h3>
   <%= form_tag(team_remove_athlete_path(@athlete)) do %>
     <div class="field">
       <%= select_tag("teams[]", options_from_collection_for_select(@athlete.is_on_roster, :id, :formalname), :multiple => true, :prompt => "Select Teams", :'data-native-menu' => false ) %>

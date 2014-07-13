@@ -12,9 +12,9 @@ class Athlete < ActiveRecord::Base
 
   def displayname
     if nickname.blank? then
-      dn = sprintf("Athlete %s %s", firstname, lastname)
+      dn = sprintf("%s %s", firstname, lastname)
     else
-      dn = sprintf("Athlete %s (%s) %s", firstname, nickname, lastname)
+      dn = sprintf("%s (%s) %s", firstname, nickname, lastname)
     end
   end
 

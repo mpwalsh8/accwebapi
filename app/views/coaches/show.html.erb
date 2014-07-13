@@ -1,8 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<div data-role="header">
-<h1><%=h @coach.displayname %></h1>
-</div>
+<h3 class="ui-bar ui-bar-b ui-corner-all"><%=h @coach.displayname %></h3>
 
 <ul data-role="listview" data-inset="true">
   <% if !@coach.email.blank? %>
