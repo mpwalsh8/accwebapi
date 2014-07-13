@@ -1,7 +1,7 @@
 <%= form_for(@sports_venue) do |f| %>
   <% if @sports_venue.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@sports_venue.errors.count, "error") %> prohibited this sports_venue from being saved:</h2>
+      <h2><%= pluralize(@sports_venue.errors.count, "error") %> prohibited this sports venue assignment from being saved:</h2>
 
       <ul>
       <% @sports_venue.errors.full_messages.each do |message| %>
@@ -21,6 +21,6 @@
   </div>
   <br />
   <div class="actions">
-    <%= f.submit "Add Sport to Venue" %>
+    <%= f.submit "Save Sport to Venue" %>
   </div>
 <% end %>

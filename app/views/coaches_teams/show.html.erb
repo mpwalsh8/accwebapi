@@ -1,16 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Team:</strong>
-  <%= @coaches_team.team.formalname %>
-  <strong>Coach:</strong>
-  <%= @coaches_team.coach.fullname %>
-  <strong>Headcoach:</strong>
-  <%= @coaches_team.headcoach %>
-</p>
+<h3 class="ui-bar ui-bar-b ui-corner-all"><%= @coaches_team.team.formalname %>:  <%= @coaches_team.coach.fullname %></h3>
+
+<figure id="pictogram">
+  <%= image_tag(@coaches_team.team.sport.imageurl, alt: @coaches_team.team.formalname) %>
+</figure>
+          
+<ul data-role="listview" data-inset="true">
+  <li><%= link_to @coaches_team.team.formalname, team_path(@coaches_team.team_id) %></li>
+  <li><%= link_to @coaches_team.coach.fullname, coach_path(@coaches_team.coach_id) %></li>
+</ul> 
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
-  <%= link_to 'Back', coaches_teams_path, :'data-role' => "button", :'data-icon' => "back" %>
-  <%= link_to 'Edit', edit_coaches_team_path(@coaches_team), :'data-role' => "button", :'data-icon' => "edit" %>
+  <%= link_to 'Back to Team Coaches', coaches_teams_path, :'data-role' => "button", :'data-icon' => "back" %>
+  <%= link_to 'Edit Team Coaches', edit_coaches_team_path(@coaches_team), :'data-role' => "button", :'data-icon' => "edit" %>
 </div>
 

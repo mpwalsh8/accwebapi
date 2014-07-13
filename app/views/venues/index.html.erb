@@ -1,7 +1,7 @@
 <h3 class="ui-bar ui-bar-b ui-corner-all">Venues</h3>
 
 
-<ul data-role="listview" data-inset="true" data-filter="true">
+<ul data-role="listview" data-inset="true" data-autodividers="true" data-filter="true">
   <% @venues.each do |venue| %>
     <li><%= link_to venue.name, venue %></li>
   <% end %>

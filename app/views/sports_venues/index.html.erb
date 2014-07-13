@@ -1,32 +1,31 @@
-<h1>Listing Venue Sports</h1>
+<p id="notice"><%= notice %></p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Sport</th>
-      <th>Venue ID</th>
-      <th>Venue</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h3 class="ui-bar ui-bar-b ui-corner-all">Venue Sports</h3>
 
-  <tbody>
-    <% @sports_venues.each do |sports_venue| %>
-    <%# @venue = Venue.where(:id => sports_venue.venue_id) %>
-<%= debug(@venue) %>
-      <tr>
-        <td><%= sports_venue.sport_id %></td>
-        <td><%= sports_venue.venue_id %></td>
-        <td>*<%#= @venue.name %>*</td>
-        <td><%= link_to 'Show', sports_venue %></td>
-        <td><%= link_to 'Edit', edit_sports_venue_path(sports_venue) %></td>
-        <td><%= link_to 'Destroy', sports_venue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div data-role="collapsible-set" data-autodividers="true" data-mini="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+    <% vid = nil %>
+    <% @sports_venues.each do |sv| %>
+      <% if !vid.nil? && vid != sv.venue.id %>
+          </div>
+        </div>
+      <% end %>
+      <% if vid != sv.venue.id %>
+        <div data-role="collapsible" data-mini="true" data-inset="true">
+          <h3><%= sv.venue.name %></h3>
+          <div data-role="collapsible-set" data-mini="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+      <% end %>
+      <div data-role="collapsible" data-collapsed="true" data-inset="true">
+        <h1><%= sv.sport.name %></h1>
+        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+          <%= link_to 'Show', sv, :'data-role' => 'button', :'data-icon' => "eye" %>
+          <%= link_to 'Edit', edit_sports_venue_path(sv), :'data-role' => "button", :'data-icon' => "edit" %>
+          <%= link_to 'Destroy', sv, method: :delete, data: { confirm: 'Are you sure?' }, :'data-role' => "button", :'data-icon' => "delete" %>
+        </div>
+      </div>
+      <% vid = sv.venue.id %>
     <% end %>
-  </tbody>
-</table>
-
-<br>
+    </div>
+</div>
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
   <%= link_to 'New Sports Venue', new_sports_venue_path, :'data-role' => "button", :'data-icon' => 'plus' %>

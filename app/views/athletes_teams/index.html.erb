@@ -1,31 +1,31 @@
-<h1>Listing athletes_teams</h1>
+<h3 class="ui-bar ui-bar-b ui-corner-all">Team Athletes</h3>
 
-<table>
-  <thead>
-    <tr>
-      <th>Team</th>
-      <th>Athlete</th>
-      <th>Captain</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @athletes_teams.each do |athletes_team| %>
-      <tr>
-        <td><%= athletes_team.team_id %></td>
-        <td><%= athletes_team.athlete_id %></td>
-        <td><%= athletes_team.captain %></td>
-        <td><%= link_to 'Show', athletes_team %></td>
-        <td><%= link_to 'Edit', edit_athletes_team_path(athletes_team) %></td>
-        <td><%= link_to 'Destroy', athletes_team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div data-role="collapsible-set" data-autodividers="true" data-mini="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+    <% tid = nil %>
+    <% @athletes_teams.each do |at| %>
+      <% if !tid.nil? && tid != at.team.id %>
+          </div>
+        </div>
+      <% end %>
+      <% if tid != at.team.id %>
+        <div data-role="collapsible" data-mini="true" data-inset="true">
+          <h3><%= at.team.formalname %></h3>
+          <div data-role="collapsible-set" data-mini="true" data-collapsed-icon="carat-r" data-expanded-icon="carat-d">
+      <% end %>
+      <div data-role="collapsible" data-collapsed="true" data-inset="true">
+        <h1><%= at.athlete.fullname %></h1>
+        <div data-role="controlgroup" data-type="horizontal" data-mini="true">
+          <%= link_to 'Show', at, :'data-role' => 'button', :'data-icon' => "eye" %>
+          <%= link_to 'Edit', edit_athletes_team_path(at), :'data-role' => "button", :'data-icon' => "edit" %>
+          <%= link_to 'Destroy', at, method: :delete, data: { confirm: 'Are you sure?' }, :'data-role' => "button", :'data-icon' => "delete" %>
+        </div>
+      </div>
+      <% tid = at.team.id %>
     <% end %>
-  </tbody>
-</table>
+    </div>
+</div>
 
-<br>
 
 <div data-role="footer" data-position="fixed" data-tap-toggle="false" class="ui-bar">
-  <%= link_to 'New Athletes team', new_athletes_team_path, :'data-role' => "button", :'data-icon' => "plus" %>
+  <%= link_to 'New Team Athletes', new_athletes_team_path, :'data-role' => "button", :'data-icon' => "plus" %>
 </div>

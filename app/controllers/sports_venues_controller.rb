@@ -4,15 +4,12 @@ class SportsVenuesController < ApplicationController
   # GET /sports_venues
   # GET /sports_venues.json
   def index
-    @sports_venues = SportsVenue.all
+    @sports_venues = SportsVenue.all.order(:venue_id)
   end
 
   # GET /sports_venues/1
   # GET /sports_venues/1.json
   def show
-    #logger.debug self.id
-    #@sport = Sport.find(self.sport_id)
-    #@venue = Venue.find(self.venue_id)
   end
 
   # GET /sports_venues/new
