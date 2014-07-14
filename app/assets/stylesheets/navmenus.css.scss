@@ -1,0 +1,28 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+//  CSS for Navigation Panel Menus
+//  @see:  http://jsfiddle.net/nateflink/NWHjB/
+//  @see:  http://www.objectpartners.com/2013/05/13/adding-a-sliding-menu-to-your-jquery-mobile-app/
+
+#rightnavpanel, #leftnavpanel {
+    .ui-panel-inner {
+        padding:0px; /*make the buttons flush edge to edge*/
+    }
+    .ui-controlgroup {
+        margin:0; /*make the buttons flush to the top*/
+    }
+}
+#header {
+    height:54px;
+}
+#bars-button {
+    margin:7px;
+}
+#leftnavpanel a {
+  text-align: left;
+}
+#rightnavpanel a {
+  text-align: right;
+}
