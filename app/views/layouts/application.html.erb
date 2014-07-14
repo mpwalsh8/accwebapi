@@ -8,13 +8,41 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body class='<%= controller.controller_name %>'>
-<div data-role="page" data-theme="a" data-content-theme="a">
-  <div data-role="header" data-position="fixed">
-    <h1>Apex Cougar Club - Supporting Apex High School Athletics</h1>
-    <a href="#about" data-icon="info" data-rel="dialog" data-transition="pop" data-role="button">About</a>
-  </div><!-- "header" -->
+<div data-role="page" data-add-back-btn="true">
+<!--
+  <div data-role="header">
+    <a href="#" class="ui-btn ui-btn-icon-left ui-icon-home">Home</a>
+    <h1>Apex Cougar Club</h1>
+    <a href="#" class="ui-btn ui-btn-icon-right ui-icon-gear">Settings</a>
+  </div>--><!-- "header" -->
+
+  <div data-role="panel" id="leftnavpanel" data-display="overlay" data-position="left">
+    <div data-role="controlgroup" data-corners="false">
+      <a href="/" data-role="button" data-icon="home" data-iconpos="left">Home</a>
+      <a href="/sports" data-role="button" data-icon="eye" data-iconpos="left">Sports</a>
+      <a href="#" data-role="button" data-icon="user" data-iconpos="left">Login</a>
+      <a href="#" data-role="button" data-icon="gear" data-iconpos="left">Settings</a>
+      <a href="#" data-role="button" data-icon="info" data-iconpos="left">About</a>
+    </div>
+  </div>
+  <div data-role="panel" id="rightnavpanel" data-display="overlay" data-position="right">
+    <div data-role="controlgroup" data-corners="false">
+      <a href="/athletes_teams" data-role="button" data-icon="user" data-iconpos="right">Athletes - Teams</a>
+      <a href="/coaches_teams" data-role="button" data-icon="user" data-iconpos="right">Coaches - Teams</a>
+      <a href="/coaches_teams" data-role="button" data-icon="location" data-iconpos="right">Venues - Sports</a>
+      <a href="#" data-role="button" data-icon="calendar" data-iconpos="right">Schedules</a>
+    </div>
+  </div>
+
+    <div id="header" data-role="header" data-theme="a">
+      <a id="bars-button" data-icon="bars" class="ui-btn-left" qstyle="margin-top:10px;" href="#leftnavpanel" data-iconpos="left">Actions</a>
+      <h1>Apex Cougar Club<br><small>Supporting Apex HS Athletics</small></h1>
+      <a id="bars-button" data-icon="bars" class="ui-btn-right" qstyle="margin-top:10px;" href="#rightnavpanel" data-iconpos="right">Admin</a>
+    </div>
+
   <%= render :partial => '/navigation' %>
   <div data-role="main" class="ui-content ui-body ui-corner-all">
     <%= yield %>
